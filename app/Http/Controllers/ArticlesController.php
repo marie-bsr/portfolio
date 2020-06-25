@@ -15,11 +15,8 @@ class ArticlesController
         return view('articles.index', ['articles' => $articles]);
     }
 
-    public function show($id)
+    public function show(Article $article)
     {
-
-        $article = Article::find($id);
-
         return view('articles.show', ['article' => $article]);
     }
 }
