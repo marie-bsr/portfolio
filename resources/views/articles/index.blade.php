@@ -20,7 +20,7 @@
       </div>
 
       <div class="row">
-          <?php foreach ($articles as $article):?>
+        @foreach ($articles as $article)
         <div class="col-md-4">
           <div class="card card-blog">
             <div class="card-img">
@@ -29,18 +29,18 @@
             <div class="card-body">
               <div class="card-category-box">
                 <div class="card-category">
-                  <h6 class="category"><?= $article->categorie ?></h6>
+                  <h6 class="category">{{ $article->categorie}} </h6>
                 </div>
               </div>
-              <h3 class="card-title"><a href="blog-single.html"> <?= $article->titre ?></a></h3>
+              <h3 class="card-title"><a href="blog-single.html"> {{ $article->titre}} </a></h3>
               <p class="card-description">
-                <p> <?= $article->contenu ?></p>
+                <p> {{$article->contenu}} </p>
               </p>
             </div>
 
           </div>
         </div>
-<?php endforeach ?>
+@endforeach
           </div>
         </div>
 
