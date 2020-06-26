@@ -1,5 +1,11 @@
 @extends('layout')
-
+@include('navigation')
+<style>
+    body{
+        background-color: darkslategrey !important;
+    }
+</style>
+<div class="container p-4"></div>
 @section('content')
     <section id="blog" class="blog-mf sect-pt4 route">
         <div class="container">

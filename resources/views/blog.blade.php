@@ -1,4 +1,6 @@
-<!--/ Section Blog Star /-->
+
+
+<!--/ Section Blog Star- sert uniquement pour affichage sur page d'accueil /-->
 <section id="blog" class="blog-mf sect-pt4 route">
     <div class="container">
         <div class="row">
@@ -28,7 +30,7 @@
                                     <h6 class="category">{{ $article->categorie}} </h6>
                                 </div>
                             </div>
-                            <h3 class="card-title"><a href="blog-single.html"> {{ $article->titre}} </a></h3>
+                            <h3 class="card-title"><a href="/blog/{{$article->id}}"> {{ $article->titre}} </a></h3>
                             <p class="card-description">
                             <p> {{$article->contenu}} </p>
                             </p>

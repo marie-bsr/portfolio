@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'HomeController@index');
 
+Route::get('/home', 'HomeController@welcome');
+
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -29,6 +31,9 @@ Route::get('/about', function () {
 Route::get('/services', function () {
     return view('services');
 });
+
+
+
 
 
 

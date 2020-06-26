@@ -13,4 +13,11 @@ class HomeController
 
         return view('welcome', ['articles' => $articles]);
     }
+
+    public function welcome()
+    {
+        $articles = Article::orderBy("created_at","desc")->limit(3)->get();
+
+        return view('welcome', ['articles' => $articles]);
+    }
 }

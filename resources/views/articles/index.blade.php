@@ -1,7 +1,15 @@
 @extends('layout')
 
+@include('navigation')
+
+<style>
+    body{
+        background-color: darkslategrey !important;
+    }
+</style>
+<div class="container p-4">
 @section('content')
-    <!--/ Section Blog Star /-->
+    <!--/ Section Blog Star- pour la page /blog /-->
     <section id="blog" class="blog-mf sect-pt4 route">
         <div class="container">
             <div class="row">
@@ -10,8 +18,8 @@
                         <h3 class="title-a">
                             Blog
                         </h3>
-                        <p class="subtitle-a">
-                            Découvrez mes derniers articles
+                        <p class="text-white">
+                            Tous mes articles
                         </p>
                         <div class="line-mf"></div>
                     </div>
@@ -31,7 +39,7 @@
                                         <h6 class="category">{{ $article->categorie }}</h6>
                                     </div>
                                 </div>
-                                <h3 class="card-title"><a href="blog-single.html">{{ $article->titre }}</a></h3>
+                            <h3 class="card-title"><a href="/blog/{{$article->id}}">{{ $article->titre }}</a></h3>
                                 <p class="card-description">
                                 <p>{{ $article->contenu }}</p>
                                 </p>
@@ -47,7 +55,7 @@
     <!--/ Section Blog End /-->
 @endsection
 
-
+</div>
 
 
 
