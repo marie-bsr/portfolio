@@ -32,7 +32,7 @@
                             </div>
                             <h3 class="card-title"><a href="/blog/{{$article->id}}"> {{ $article->titre}} </a></h3>
                             <p class="card-description">
-                            <p> {{$article->contenu}} </p>
+                            <p> {{$article->extrait}} </p>
                             </p>
                         </div>
                     </div>

@@ -33,10 +33,11 @@ Route::get('/services', function () {
 });
 
 
-
-
-
-
-
+//l'ordre a une importance
 Route::get('/blog', 'ArticlesController@index');
-Route::get('/blog/{article}', 'ArticlesController@show');
+Route::post('/blog', 'ArticlesController@store');
+Route::get('/blog/create', 'ArticlesController@create');
+Route::get('/blog/{article}', 'ArticlesController@show')->name('articles.show');
+Route::get('/blog/{article}/edit', 'ArticlesController@edit');
+Route::put('/blog/{article}', 'ArticlesController@update');
+

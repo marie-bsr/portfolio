@@ -6,12 +6,15 @@
     body{
         background-color: darkslategrey !important;
     }
+    .box{
+margin-top: 6rem;
+    }
 </style>
 <div class="container p-4">
 @section('content')
     <!--/ Section Blog Star- pour la page /blog /-->
     <section id="blog" class="blog-mf sect-pt4 route">
-        <div class="container">
+        <div class="container box">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box text-center">
@@ -39,7 +42,7 @@
                                         <h6 class="category">{{ $article->categorie }}</h6>
                                     </div>
                                 </div>
-                            <h3 class="card-title"><a href="/blog/{{$article->id}}">{{ $article->titre }}</a></h3>
+                            <h3 class="card-title"><a href="{{ $article->path()}}">{{ $article->titre }}</a></h3>
                                 <p class="card-description">
                                 <p>{{ $article->contenu }}</p>
                                 </p>
@@ -53,6 +56,9 @@
 
     </section>
     <!--/ Section Blog End /-->
+    <div class="text-center">
+    <button class="btn btn-primary"><a href="/blog/create">Créer un nouvel article</a></button>
+</div>
 @endsection
 
 </div>

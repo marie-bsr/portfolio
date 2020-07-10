@@ -20,6 +20,8 @@ class CreateArticlesTable extends Migration
             $table->string('categorie');
             $table->string('titre');
             $table->text('contenu');
+            $table->text('extrait')->nullable();
+            $table->text('image')->nullable();
         });
     }
 
