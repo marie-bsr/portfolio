@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     //protection contre le mass assignment
-    protected $fillable = ['titre', 'extrait', 'categorie', 'contenu' ];
+    protected $fillable = ['titre', 'extrait', 'categorie', 'contenu', 'user_id'];
 
     public function path(){
         return  route('articles.show',$this);

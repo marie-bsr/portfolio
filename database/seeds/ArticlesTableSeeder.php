@@ -13,7 +13,8 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-
-       factory(Article::class)->create(['user_id' => User::where('id','=',1)->first()->id]);
+        factory(Article::class, 1)->create([
+            'user_id' => User::where('id', '=', 1)->first()->id
+        ]);
     }
 }

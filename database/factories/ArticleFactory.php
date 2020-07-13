@@ -7,13 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Article::class, function (Faker $faker) {
     return [
-
         'date' => now(),
-
         'categorie' => $faker->word,
         'titre' => $faker->sentence,
-        'contenu' => $faker->paragraphs(3),
+        'contenu' => $faker->paragraphs(3,true),
         'extrait' => $faker->sentence,
-
     ];
 });
