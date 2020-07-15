@@ -1,9 +1,20 @@
+@include('navigation')
+<!-- Bootstrap CSS File -->
+<link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
+<!-- Main Stylesheet File -->
+<link href="{{ asset('css/style.css')}}" rel="stylesheet">
 
+<style>
+       .box{
+margin-top: 200px;
+    }
+
+</style>
 
 
 <section id="about" class="about-mf sect-pt4 route">
-    <div class="container">
+    <div class="container box">
       <div class="row">
         <div class="col-sm-12">
           <div class="box-shadow-full">

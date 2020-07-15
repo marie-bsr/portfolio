@@ -1,6 +1,8 @@
 @extends('layout')
 @include('navigation')
+
 <style>
+
     body{
 
         background-color: #fafbfc ;
@@ -27,33 +29,108 @@ margin-top: 200px;
 <div class="container box"></div>
 @section('content')
 
-    <section id="blog" class="blog-mf sect-pt4 route">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="card card-blog">
-                        <div class="card-img img-perso">
-                            <a href="blog-single.html"><img src="{{URL::asset('/img/post-1.jpg')}}" alt="" class="img-perso"></a>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-category-box">
-                                <div class="card-category">
-                                    <h6 class="category">{{ $article->categorie }}</h6>
-                                </div>
-                            </div>
-                            <h3 class="card-title"><a href="blog-single.html">{{ $article->titre }}</a></h3>
-                            <p class="card-description">
-                            <p>{{ $article->extrait }}</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="intro intro-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+        <div class="overlay-mf"></div>
+        <div class="intro-content display-table">
+          <div class="table-cell">
+            <div class="container">
+              <h2 class="intro-title mb-4">Blog </h2>
+
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="container p-4 text-center">
+      <main id="main">
 
-        <button class="btn btn-1"><a href="/blog/{{ $article->id }}/edit">Editer l'article</a></button>
-        <button class="btn btn-3"><a href="">Supprimer l'article</a></button>
-    </div>
-    </section>
+        <!-- ======= Blog Single Section ======= -->
+        <section class="blog-wrapper sect-pt4" id="blog">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="post-box">
+                  <div class="post-thumb">
+                    <img src="assets/img/post-1.jpg" class="img-fluid" alt="">
+                  </div>
+                  <div class="post-meta">
+                    <h1 class="article-title">  <p>{{ $article->titre }}</p></h1>
+                    <ul>
+                      <li>
+                        <span class="ion-ios-person"></span>
+                        <a href="#">  {{ $article->user->name }}</a>
+                      </li>
+                      <li>
+                        <span class="ion-pricetag"></span>
+                        <a href="#">Web Design</a>
+                      </li>
+
+                    </ul>
+                  </div>
+                  <div class="article-content">
+                    <p>{{ $article->contenu }}</p>
+
+                    <blockquote class="blockquote">
+                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    </blockquote>
+
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="col-md-4">
+                <div class="widget-sidebar sidebar-search">
+                  <h5 class="sidebar-title">Search</h5>
+                  <div class="sidebar-content">
+                    <form>
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary btn-search" type="button">
+                            <span class="ion-android-search"></span>
+                          </button>
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="widget-sidebar">
+                  <h5 class="sidebar-title">Recent Post</h5>
+                  <div class="sidebar-content">
+                    <ul class="list-sidebar">
+                      <li>
+                        <a href="#">Atque placeat maiores.</a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="widget-sidebar widget-tags">
+                  <h5 class="sidebar-title">Tags</h5>
+                  <div class="sidebar-content">
+
+
+
+                    <ul>
+                        @foreach ($article->tags as $tag)
+                      <li>
+                        <a href="#">#{{$tag->name}}</a>
+                      </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container p-4 text-center">
+
+            <button class="btn btn-1"><a href="/blog/{{ $article->id }}/edit">Editer l'article</a></button>
+            <button class="btn btn-3"><a href="">Supprimer l'article</a></button>
+        </div>
+        </section><!-- End Blog Single Section -->
+
+      </main><!-- End #main -->
 @endsection
+

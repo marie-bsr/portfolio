@@ -1,10 +1,5 @@
 
 <!--/ Nav Star /-->
-<style>
-    .nav-link {
-    color: black !important;
-    }
-</style>
 
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container ">

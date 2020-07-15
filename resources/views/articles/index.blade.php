@@ -4,7 +4,7 @@
 
 <style>
     body{
-        background-color: darkslategrey !important;
+        background-color: rgb(6, 2, 15) !important;
     }
     .box{
 margin-top: 6rem;

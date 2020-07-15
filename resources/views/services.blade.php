@@ -1,8 +1,19 @@
 
+@include('navigation')
+<!-- Bootstrap CSS File -->
+<link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
+<!-- Main Stylesheet File -->
+<link href="{{ asset('css/style.css')}}" rel="stylesheet">
+
+<style>
+       .box{
+margin-top: 200px;
+    }
+</style>
   <!--/ Section Services Star /-->
   <section id="services" class="services-mf route">
-    <div class="container">
+    <div class="container box">
       <div class="row">
         <div class="col-sm-12">
           <div class="title-box text-center">
