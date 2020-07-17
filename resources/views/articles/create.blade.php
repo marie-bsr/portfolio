@@ -46,6 +46,22 @@
       <label for="contenu">Contenu</label>
       <textarea class="form-control @error ('contenu') is-danger @enderror" id="contenu" rows="5" name="contenu" value="{{old('contenu')}}"required></textarea>
     </div>
+
+    <div class="form-group">
+        <label for="tag">Tags</label>
+      <select multiple class="form-control"
+      name="tags[]"
+
+       >
+    @foreach ($tags as $tag)
+    <option value="{{$tag->id}}">{{$tag->name}}</option>
+    @endforeach
+    </select>
+
+      @error('tags')
+      <p class="help is-danger">{{$message}}</p>
+  @enderror
+      </div>
     <button type="submit" class="btn btn-primary">Enregister</button>
   </form>
 

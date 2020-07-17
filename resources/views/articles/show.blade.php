@@ -115,7 +115,7 @@ margin-top: 200px;
                     <ul>
                         @foreach ($article->tags as $tag)
                       <li>
-                        <a href="#">#{{$tag->name}}</a>
+                      <a href="/blog?tag={{$tag->name}}">#{{$tag->name}}</a>
                       </li>
                       @endforeach
                     </ul>

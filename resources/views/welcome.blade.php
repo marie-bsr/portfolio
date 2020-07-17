@@ -55,8 +55,8 @@
       <div class="table-cell">
         <div class="container">
           <!--<p class="display-6 color-d">Hello, world!</p>-->
-          <h1 class="intro-title mb-4">Besoin d'un site web? </br>Vous êtes au bon endroit!</h1>
-          <p class="intro-subtitle"><span class="text-slider-items">Augmenter votre visibilité, Développer votre présence en ligne, Gagner du temps, Augmenter votre productivité</span><strong class="text-slider"></strong></p>
+          <h2 class="intro-title mb-4">Besoin d'un site web? </br>Vous êtes au bon endroit!</h2>
+          <p class="intro-subtitle">Vous voulez <span class="text-slider-items">Construire un business en ligne, Augmenter votre visibilité, Développer votre activité</span><strong class="text-slider"></strong></p>
           <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
         </div>
       </div>

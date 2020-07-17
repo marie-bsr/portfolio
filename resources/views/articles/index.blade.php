@@ -30,7 +30,7 @@ margin-top: 6rem;
             </div>
 
             <div class="row">
-                @foreach($articles as $article)
+                @forelse($articles as $article)
                     <div class="col-md-4">
                         <div class="card card-blog">
                             <div class="card-img">
@@ -50,7 +50,10 @@ margin-top: 6rem;
 
                         </div>
                     </div>
-                @endforeach
+                    @empty
+                     <p>Il n'y a pas d'articles correspondant à ce tag.</p>
+
+                @endforelse
             </div>
         </div>
 
