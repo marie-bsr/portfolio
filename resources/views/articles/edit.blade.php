@@ -27,7 +27,11 @@
     </div>
     <div class="form-group">
         <label for="image">Image</label>
-        <input type="text" class="form-control-file" id="image" name="image" value="{{$article->image}}" >
+        <input type="file" value="{{$article->image}}"class="form-control @error('image') is-invalid @enderror" name="image" id="image"  value="{{ old('image') }}">
+        @error('image')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+
       </div>
       <div class="form-group">
         <label for="categorie">Categorie</label>

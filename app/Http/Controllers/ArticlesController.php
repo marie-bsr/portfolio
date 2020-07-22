@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Tag;
+use Image;
 
 class ArticlesController extends Controller
 {
@@ -41,13 +42,32 @@ $articles = Article::orderBy("created_at", "desc")->limit(3)->get();
         //enregistre ce nouvel article
         //dump(request()->all());
         $this->validateArticle();
-        $article = new Article(request(['titre','extrait','contenu']));
+        $article = new Article(request(['titre',
+        'extrait',
+        'contenu',
+        'image'
+        ]));
         $article->user_id =1;
-        $article->save();
-
         $article->tags()->attach(request('tags'));
+
+        if ($article->hasfile('image')) {
+            $image = $article->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = storage_path('app/public/images/') . $filename;
+
+           $image->save($location);
+
+            $article->image = $filename;
+
+          }
+
+      //  $request->image->store(config('images.path'), 'public');
+
+      $article->save();
+
         return redirect('/blog');
     }
+
 
 
     public function edit(Article $article)
@@ -67,9 +87,12 @@ $articles = Article::orderBy("created_at", "desc")->limit(3)->get();
 
         return redirect($article->path());
     }
-    public function destroy()
+    public function destroy($id)
     {
         //supprime l'article
+        Article::destroy($id);
+        return redirect('/blog');
+
     }
 
     protected function validateArticle(){

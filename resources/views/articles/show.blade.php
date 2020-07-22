@@ -127,7 +127,7 @@ margin-top: 200px;
           <div class="container p-4 text-center">
 
             <button class="btn btn-1"><a href="/blog/{{ $article->id }}/edit">Editer l'article</a></button>
-            <button class="btn btn-3"><a href="">Supprimer l'article</a></button>
+          <button class="btn btn-3"><a href="#">Supprimer l'article</a></button>
         </div>
         </section><!-- End Blog Single Section -->
 

@@ -1,3 +1,4 @@
+
 @include('navigation')
 <!-- Bootstrap CSS File -->
 <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -6,14 +7,17 @@
 <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 
 <style>
+    body{
+        background-color: darkblue;
+    }
        .box{
 margin-top: 200px;
     }
 </style>
   <!--/ Section Contact-Footer Star /-->
-  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(img/overlay-bg.jpg)">
-    <div class="overlay-mf"></div>
-    <div class="container">
+  <section>
+
+    <div class="container box">
       <div class="row">
         <div class="col-sm-12">
           <div class="contact-mf">
@@ -26,33 +30,42 @@ margin-top: 200px;
                     </h5>
                   </div>
                   <div>
-                      <form action="" method="post" role="form" class="contactForm">
+                      <form action="{{ url('contact') }}" method="post" role="form" class="contactForm">
+                        @csrf
                       <div id="sendmessage">Votre message a été envoyé. Merci!</div>
                       <div id="errormessage"></div>
                       <div class="row">
                         <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                            <div class="validation"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Votre email" data-rule="email" data-msg="Merci d'indiquer une adresse email valide" />
-                            <div class="validation"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Merci d'écrire au moins 8 caractères" />
-                              <div class="validation"></div>
+                                <input type="text" class="form-control  @error('nom') is-invalid @enderror" name="nom" id="nom" placeholder="Votre nom" value="{{ old('nom') }}">
+                                @error('nom')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Ecrivez votre message s'il vous plait" placeholder="Message"></textarea>
-                            <div class="validation"></div>
-                          </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control  @error('email') is-invalid @enderror" name="email" id="email" placeholder="Votre email" value="{{ old('email') }}">
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <textarea class="form-control  @error('subject') is-invalid @enderror" name="subject" id="subject" placeholder="Votre sujet">{{ old('subject') }}</textarea>
+                                @error('subject')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <textarea class="form-control  @error('message') is-invalid @enderror" name="message" id="message" placeholder="Votre message">{{ old('message') }}</textarea>
+                                @error('message')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="col-md-12">
                           <button type="submit" class="button button-a button-big button-rouded">Envoyer mon Message</button>

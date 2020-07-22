@@ -14,7 +14,7 @@
 
 <div class="container formulaire text-center">
     <h1>Nouvel article</h1>
-    <form method="post" action="/blog">
+    <form method="post" action="/blog" enctype="multipart/form-data">
         @csrf
 
     <div class="form-group">
@@ -31,9 +31,12 @@
 @endif
     </div>
     <div class="form-group">
-        <label for="image">Image</label>
-        <input type="text" class="form-control-file" id="image" name="image" >
-      </div>
+        <label for="categorie">Image</label>
+        <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image"  value="{{ old('image') }}">
+        @error('image')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
       <div class="form-group">
         <label for="categorie">Categorie</label>
         <textarea class="form-control @error ('categorie') is-danger @enderror" value="{{old('categorie')}}"id="categorie" name="categorie" required></textarea>
