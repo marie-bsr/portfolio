@@ -81,7 +81,7 @@
         <div class="container">
           <!--<p class="display-6 color-d">Hello, world!</p>-->
           <h2 class="intro-title mb-4">Besoin d'un site web? </br>Vous êtes au bon endroit!</h2>
-          <p class="intro-subtitle">Vous voulez <span class="text-slider-items">Construire un business en ligne, Augmenter votre visibilité, Développer votre activité</span><strong class="text-slider"></strong></p>
+          <p class="intro-subtitle">Je réalise <span class="text-slider-items">des sites web, des applications, des sites vitrines, des logos, des chartes graphiques</span><strong class="text-slider"></strong></p>
           <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
         </div>
       </div>

@@ -22,7 +22,7 @@
                 <div class="col-md-4">
                     <div class="card card-blog">
                         <div class="card-img">
-                            <a href="blog-single.html"><img src="img/post-1.jpg" alt="" class="img-fluid"></a>
+                            <a href="blog-single.html"><img src="{{ $article->image}}" alt="" class="img-fluid"></a>
                         </div>
                         <div class="card-body">
                             <div class="card-category-box">

@@ -9,6 +9,14 @@
     .box{
 margin-top: 6rem;
     }
+    .pagination{
+        justify-content: center;
+            align-items: center;
+            padding: 0.4em;
+    }
+    .has-background-grey-lighter{
+        background-color: lightslategrey;
+    }
 </style>
 <div class="container p-4">
 @section('content')
@@ -31,18 +39,19 @@ margin-top: 6rem;
 
             <div class="row">
                 @forelse($articles as $article)
+
                     <div class="col-md-4">
-                        <div class="card card-blog">
+                        <div class="card card-blog ">
                             <div class="card-img">
-                                <a href="blog-single.html"><img src="img/post-1.jpg" alt="" class="img-fluid"></a>
+                                <a href="{{ $article->path()}}"><img src="{{ $article->image }}" alt="" class="img-fluid"></a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body"  >
                                 <div class="card-category-box">
-                                    <div class="card-category">
-                                        <h6 class="category">{{ $article->categorie }}</h6>
+                                    <div class="card-category m-4">
+                                        <h6 class="category text-white">{{ $article->category->name}}</h6>
                                     </div>
                                 </div>
-                            <h3 class="card-title"><a href="{{ $article->path()}}">{{ $article->titre }}</a></h3>
+                            <h3 class="card-title mt-4"><a href="{{ $article->path()}}">{{ $article->titre }}</a></h3>
                                 <p class="card-description">
                                 <p>{{ $article->contenu }}</p>
                                 </p>
@@ -54,8 +63,13 @@ margin-top: 6rem;
                      <p>Il n'y a pas d'articles correspondant à ce tag.</p>
 
                 @endforelse
-            </div>
+
+            <div class="pagination">
+            {{ $articles->links() }}
         </div>
+        </div>
+
+
 
     </section>
     <!--/ Section Blog End /-->

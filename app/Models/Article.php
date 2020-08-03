@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
+    //permet de ne pas supprimer définitivement les articles, passage par une "corbeille"
+    use SoftDeletes;
     //protection contre le mass assignment
     protected $fillable = ['titre', 'extrait','image', 'categorie', 'contenu', 'user_id'];
 

@@ -30,6 +30,8 @@
     <p class="help is-danger">{{$errors->first('titre')}}</p>
 @endif
     </div>
+    <!--
+        upload d'image et enregistrement dans le projet
     <div class="form-group">
         <label for="categorie">Image</label>
         <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image"  value="{{ old('image') }}">
@@ -37,9 +39,27 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
+-->
+<div class="form-group">
+    <label for="titre">Image URL</label>
+  <input type="text"
+  class="form-control @error ('image') is-danger @enderror"
+  id="image"
+  name="image"
+  value="{{old('image')}}"
+  required >
+
+  @if ($errors->has('image'))
+  <p class="help is-danger">{{$errors->first('image')}}</p>
+@endif
+  </div>
       <div class="form-group">
         <label for="categorie">Categorie</label>
-        <textarea class="form-control @error ('categorie') is-danger @enderror" value="{{old('categorie')}}"id="categorie" name="categorie" required></textarea>
+        <select class="form-control @error ('categorie') is-danger @enderror" id="categorie" name="categorie" required>
+            @foreach ($categories as $categorie)
+    <option value="{{$categorie->id}}">{{$categorie->name}}</option>
+    @endforeach
+        </select>
       </div>
     <div class="form-group">
         <label for="extrait">Extrait</label>
@@ -53,14 +73,11 @@
     <div class="form-group">
         <label for="tag">Tags</label>
       <select multiple class="form-control"
-      name="tags[]"
-
-       >
+      name="tags[]"  >
     @foreach ($tags as $tag)
     <option value="{{$tag->id}}">{{$tag->name}}</option>
     @endforeach
     </select>
-
       @error('tags')
       <p class="help is-danger">{{$message}}</p>
   @enderror

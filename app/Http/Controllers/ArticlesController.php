@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Tag;
-use Image;
+use App\Models\Category;
+use Illuminate\Support\Str;
 
 class ArticlesController extends Controller
 {
@@ -16,7 +17,10 @@ class ArticlesController extends Controller
 
         } else{
 //retourne la liste des articles
-$articles = Article::orderBy("created_at", "desc")->limit(3)->get();
+//$articles = Article::orderBy("created_at", "desc")->limit(6)->get();
+//$articles = Article::withTrashed()->paginate(3);
+$articles = Article::orderBy("created_at", "desc")->paginate(3);
+
         }
 
 
@@ -26,14 +30,22 @@ $articles = Article::orderBy("created_at", "desc")->limit(3)->get();
     public function show(Article $article)
     //retourne un seul article
     {
-        return view('articles.show', ['article' => $article]);
+
+        return view('articles.show', [
+        //  'article' => $article::withTrashed()->first(),
+        'article' => $article,
+'lastArticles' => Article::orderBy("created_at", "desc")->limit(6)->get(),
+
+
+            ]);
     }
 
     public function create()
     {
-
+//on a besoin de variables tags et categories pour les afficher tous
         return view('articles.create',[
-            'tags' => Tag::all()
+            'tags' => Tag::all(),
+            'categories' => Category::all()
         ]);
     }
 
@@ -46,25 +58,16 @@ $articles = Article::orderBy("created_at", "desc")->limit(3)->get();
         'extrait',
         'contenu',
         'image'
+
         ]));
+
+       // $article->image->store(config('images.path'), 'public');
+
+
+
         $article->user_id =1;
+        $article->save();
         $article->tags()->attach(request('tags'));
-
-        if ($article->hasfile('image')) {
-            $image = $article->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $location = storage_path('app/public/images/') . $filename;
-
-           $image->save($location);
-
-            $article->image = $filename;
-
-          }
-
-      //  $request->image->store(config('images.path'), 'public');
-
-      $article->save();
-
         return redirect('/blog');
     }
 
@@ -74,7 +77,10 @@ $articles = Article::orderBy("created_at", "desc")->limit(3)->get();
     {
         //affiche une view pour éditer un article
 
-        return view('articles.edit', ['article' => $article]);
+        return view('articles.edit', ['article' => $article,
+        'tags' => Tag::all(),
+        'categories' => Category::all()]
+    );
     }
 
 
@@ -87,11 +93,14 @@ $articles = Article::orderBy("created_at", "desc")->limit(3)->get();
 
         return redirect($article->path());
     }
-    public function destroy($id)
+    public function destroy(Article $article)
     {
         //supprime l'article
-        Article::destroy($id);
-        return redirect('/blog');
+
+    $article->delete();
+
+//il faudrait ajouter une confirmation
+        return redirect('/blog')->with('info', 'L article a bien été archivé dans la base de données.');
 
     }
 
@@ -101,7 +110,22 @@ $articles = Article::orderBy("created_at", "desc")->limit(3)->get();
 
             'extrait' => 'required',
             'contenu' => 'required',
-            'tags' =>'exists:tags,id'
+            'tags' =>'exists:tags,id',
+           // 'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
         ]);
     }
+
+    public function forceDestroy($id)
+{
+    Article::withTrashed()->whereId($id)->firstOrFail()->forceDelete();
+    return redirect('/blog')->with('info', "L'article a bien été supprimé définitivement dans la base de données.");
+}
+public function restore($id)
+{
+    Article::withTrashed()->whereId($id)->firstOrFail()->restore();
+    return redirect('/blog')->with('info', "L'article a bien été restauré.");
+}
+
+
+
 }

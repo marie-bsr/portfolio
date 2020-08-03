@@ -8,6 +8,12 @@
         background-color: #fafbfc ;
 
     }
+    .has-background-grey-lighter{
+        background-color: grey;
+    }
+    .blue{
+        background-color: rgb(104, 219, 240) !important;
+    }
     .box{
 margin-top: 200px;
     }
@@ -28,13 +34,19 @@ margin-top: 200px;
 </style>
 <div class="container box"></div>
 @section('content')
+@if(session()->has('info'))
+<div class="notification is-success">
+    {{ session('info') }}
+</div>
+@endif
 
-    <div class="intro intro-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+    <div class="intro intro-single route bg-image">
         <div class="overlay-mf"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
             <div class="container">
               <h2 class="intro-title mb-4">Blog </h2>
+
 
             </div>
           </div>
@@ -48,9 +60,10 @@ margin-top: 200px;
           <div class="container">
             <div class="row">
               <div class="col-md-8">
-                <div class="post-box">
+
+                <div class="post-box ">
                   <div class="post-thumb">
-                    <img src="assets/img/post-1.jpg" class="img-fluid" alt="">
+                    <img src="{{ $article->image }}" class="img-fluid" alt="">
                   </div>
                   <div class="post-meta">
                     <h1 class="article-title">  <p>{{ $article->titre }}</p></h1>
@@ -61,7 +74,7 @@ margin-top: 200px;
                       </li>
                       <li>
                         <span class="ion-pricetag"></span>
-                        <a href="#">Web Design</a>
+                      <a href="#">{{$article->category->name}}</a>
                       </li>
 
                     </ul>
@@ -70,17 +83,16 @@ margin-top: 200px;
                     <p>{{ $article->contenu }}</p>
 
                     <blockquote class="blockquote">
-                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <p class="mb-0">{{$article->extrait}}</p>
                     </blockquote>
 
                   </div>
                 </div>
 
-
               </div>
               <div class="col-md-4">
                 <div class="widget-sidebar sidebar-search">
-                  <h5 class="sidebar-title">Search</h5>
+                  <h5 class="sidebar-title">Recherche</h5>
                   <div class="sidebar-content">
                     <form>
                       <div class="input-group">
@@ -95,12 +107,16 @@ margin-top: 200px;
                   </div>
                 </div>
                 <div class="widget-sidebar">
-                  <h5 class="sidebar-title">Recent Post</h5>
+                  <h5 class="sidebar-title">Articles récents</h5>
                   <div class="sidebar-content">
                     <ul class="list-sidebar">
-                      <li>
-                        <a href="#">Atque placeat maiores.</a>
-                      </li>
+
+                        @foreach($lastArticles as $lastarticle)
+
+                        <p><a href="{{ $lastarticle->path() }}">{{ $lastarticle->titre }}</a></p>
+
+
+                @endforeach
 
                     </ul>
                   </div>
@@ -125,9 +141,20 @@ margin-top: 200px;
             </div>
           </div>
           <div class="container p-4 text-center">
-
+            @if($article->deleted_at)
+            <form action="{{route('articles.restore', $article->id) }}" method="post">
+                @csrf
+                @method('PUT')
+                <button class="btn btn-1" type="submit">Restaurer</button>
+            </form>
+        @else
             <button class="btn btn-1"><a href="/blog/{{ $article->id }}/edit">Editer l'article</a></button>
-          <button class="btn btn-3"><a href="#">Supprimer l'article</a></button>
+@endif
+          <form action="{{route($article->deleted_at? 'articles.force.destroy' : 'articles.destroy', $article->id)}}" method="post">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-3" type="submit">Supprimer l'article</button>
+        </form>
         </div>
         </section><!-- End Blog Single Section -->
 

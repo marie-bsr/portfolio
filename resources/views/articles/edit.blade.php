@@ -21,30 +21,48 @@
         @csrf
         @method('PUT')
 
-    <div class="form-group">
-      <label for="titre">Titre</label>
-      <input type="text" class="form-control" id="titre" name="titre" value="{{$article->titre}}"  >
-    </div>
+        <div class="form-group">
+            <label for="titre">Titre</label>
+            <textarea class="form-control @error ('titre') is-danger @enderror" id="titre"  name="titre" required>{{$article->titre}}</textarea>
+          </div>
+          <!--
     <div class="form-group">
         <label for="image">Image</label>
-        <input type="file" value="{{$article->image}}"class="form-control @error('image') is-invalid @enderror" name="image" id="image"  value="{{ old('image') }}">
-        @error('image')
+        <input type="file" value="{{$article->image}}"class="form-control @error('image') is-invalid @enderror" name="image" id="image" >
+ @error('image')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
 
       </div>
+    -->
       <div class="form-group">
         <label for="categorie">Categorie</label>
-        <input type ="textarea"class="form-control" id="categorie" name="categorie" value="{{$article->categorie}}">
+        <select class="form-control @error ('categorie') is-danger @enderror" id="categorie" name="categorie" required>
+            @foreach ($categories as $categorie)
+    <option value="{{$categorie->id}}">{{$categorie->name}}</option>
+    @endforeach
+        </select>
       </div>
-    <div class="form-group">
+      <div class="form-group">
         <label for="extrait">Extrait</label>
-        <textarea class="form-control" id="extrait" rows="3" name="extrait" >{{$article->extrait}}</textarea>
+        <textarea class="form-control @error ('extrait') is-danger @enderror" id="extrait" rows="3" name="extrait" required>{{$article->extrait}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="contenu">Contenu</label>
+        <textarea class="form-control @error ('contenu') is-danger @enderror" id="contenu" rows="10" name="contenu" required>{{$article->contenu}}</textarea>
       </div>
     <div class="form-group">
-      <label for="contenu">Contenu</label>
-      <textarea class="form-control" id="contenu" rows="10" name="contenu" >{{$article->contenu}}</textarea>
-    </div>
+        <label for="tag">Tags</label>
+      <select multiple class="form-control"
+      name="tags[]"  >
+    @foreach ($tags as $tag)
+    <option value="{{$tag->id}}">{{$tag->name}}</option>
+    @endforeach
+    </select>
+      @error('tags')
+      <p class="help is-danger">{{$message}}</p>
+  @enderror
+      </div>
 
     <button type="submit" class="btn btn-primary">Enregister</button>
   </form>

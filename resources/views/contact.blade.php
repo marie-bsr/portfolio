@@ -7,9 +7,7 @@
 <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 
 <style>
-    body{
-        background-color: darkblue;
-    }
+
        .box{
 margin-top: 200px;
     }

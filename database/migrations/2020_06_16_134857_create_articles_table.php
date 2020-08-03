@@ -23,6 +23,8 @@ class CreateArticlesTable extends Migration
             $table->text('contenu');
             $table->text('extrait')->nullable();
             $table->text('image')->nullable();
+            $table->softDeletes()->nullable();// création d'une corbeille pour éviter une suppression définitive
+
 
             //si on delete un user, on delete aussi ses articles
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

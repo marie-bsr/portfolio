@@ -45,9 +45,10 @@ Route::get('/blog/create', 'ArticlesController@create');
 Route::get('/blog/{article}', 'ArticlesController@show')->name('articles.show');
 Route::get('/blog/{article}/edit', 'ArticlesController@edit');
 Route::put('/blog/{article}', 'ArticlesController@update');
-
-
-
+Route::delete('/blog/{article}', 'ArticlesController@destroy')->name('articles.destroy');
+//routes de la corbeille
+Route::delete('blog/force/{article}', 'ArticlesController@forceDestroy')->name('articles.force.destroy');
+Route::put('blog/restore/{article}', 'ArticlesController@restore')->name('articles.restore');
 
 Auth::routes();
 
@@ -56,11 +57,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('contact', 'ContactController@create');
 Route::post('contact', 'ContactController@store');
 
-Route::get('/test', function () {
-    return new App\Mail\Contact([
-      'nom' => 'Durand',
-      'email' => 'durand@chezlui.com',
-      'subject' => 'coucou',
-      'message' => 'Je voulais vous dire que votre site est magnifique !'
-      ]);
-});
