@@ -35,8 +35,8 @@ margin-top: 200px;
                       <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
-                                <input type="text" class="form-control  @error('nom') is-invalid @enderror" name="nom" id="nom" placeholder="Votre nom" value="{{ old('nom') }}">
-                                @error('nom')
+                                <input type="text" class="form-control  @error('name') is-invalid @enderror" name="name" id="name" placeholder="Votre nom" value="{{ old('name') }}">
+                                @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -45,6 +45,14 @@ margin-top: 200px;
                             <div class="form-group">
                                 <input type="email" class="form-control  @error('email') is-invalid @enderror" name="email" id="email" placeholder="Votre email" value="{{ old('email') }}">
                                 @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <input type="phone_number" class="form-control  @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" placeholder="Votre numéro de téléphone" value="{{ old('phone_number') }}">
+                                @error('phone_number')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
