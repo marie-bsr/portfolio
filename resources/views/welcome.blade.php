@@ -6,12 +6,16 @@
 
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container navbox">
-        <a class="navbar-brand js-scroll" href="#page-top"><img
-            src="img/logo.png"
+        <a class="navbar-brand js-scroll" href="#page-top">
+
+            <img
+            src=""
             alt="logo"
             height="150px"
 
-        /></a>
+        />
+
+    </a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
                 aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
@@ -74,13 +78,13 @@
 @section('content')
 
  <!--/ Intro Skew Star /-->
- <div id="home" class="intro route bg-image" style="background-image: url(img/intro-bg.jpg)">
+ <div id="home" class="intro route bg-image" style="background-image: url(https://images.unsplash.com/photo-1580824600848-a03764cd9875?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
         <div class="container">
           <!--<p class="display-6 color-d">Hello, world!</p>-->
-          <h2 class="intro-title mb-4">Besoin d'un site web? </br>Vous êtes au bon endroit!</h2>
+          <h2 class="intro-title mb-4">Je créé votre site web sur mesure</h2>
           <p class="intro-subtitle">Je réalise <span class="text-slider-items">des sites web, des applications, des sites vitrines, des logos, des chartes graphiques</span><strong class="text-slider"></strong></p>
           <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
         </div>

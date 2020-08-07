@@ -8,8 +8,8 @@
     <meta content="" name="description">
 
     <!-- Favicons -->
-    <link href="img/logo1.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="img/freelancer.png" rel="icon">
+    <link href="img/freelancer.png" rel="apple-touch-icon">
 
     <!-- Bootstrap CSS File -->
     <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

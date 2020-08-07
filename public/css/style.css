@@ -1,16 +1,6 @@
-/*
-  Theme Name: DevFolio
-  Theme URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-  Author: BootstrapMade.com
-  License: https://bootstrapmade.com/license/
-*/
-
-/*======================================
-//--//-->   STYLES GENERALES
-======================================*/
 
 body {
-    background-color: #f5f5f5;
+    background-color: #fbf9f9;
     color: #4e4e4e;
   }
 
@@ -29,7 +19,7 @@ body {
   }
 
   a:hover {
-    color: #2b59e0;
+    color: #3D3938;
     text-decoration: none;
     transition: all 0.5s ease-in-out;
   }
@@ -39,7 +29,7 @@ body {
   }
 
   .color-a {
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .color-d {
@@ -60,7 +50,7 @@ body {
 
   .box-shadow-a,
   .button:hover {
-    box-shadow: 0 0 0 4px #cde1f8;
+    box-shadow: 0 0 0 4px grey;
   }
 
   .display-5 {
@@ -90,7 +80,7 @@ body {
   }
 
   .overlay-mf {
-    background-color: #2b59e0;
+    background-color: #3D3938;
   }
 
   .overlay-mf {
@@ -160,7 +150,7 @@ body {
   .line-mf {
     width: 40px;
     height: 5px;
-    background-color: #2b59e0;
+    background-color: #e0d9d2;
     margin: 0 auto;
   }
 
@@ -179,7 +169,7 @@ body {
     content: '';
     position: absolute;
     height: 3px;
-    background-color: #2b59e0;
+    background-color: #e0d9d2;
     width: 100px;
     bottom: -12px;
   }
@@ -216,14 +206,14 @@ body {
     border-radius: 50%;
     line-height: 1.4;
     margin: 0 15px 0 0;
-    box-shadow: 0 0 0 3px #2b59e0;
+    box-shadow: 0 0 0 3px #e0d9d2;
     transition: all 500ms ease;
   }
 
   .socials .ico-circle:hover {
-    background-color: #2b59e0;
-    color: #fff;
-    box-shadow: 0 0 0 3px #cde1f8;
+    background-color: #e0d9d2;
+
+    box-shadow: 0 0 0 3px grey;
     transition: all 500ms ease;
   }
 
@@ -246,7 +236,7 @@ body {
   }
 
   .list-ico span {
-    color: #2b59e0;
+    color: #e0d9d2;
     margin-right: 10px;
   }
 
@@ -260,7 +250,7 @@ body {
     line-height: 1.55;
     margin: 0 auto;
     text-align: center;
-    box-shadow: 0 0 0 10px #2b59e0;
+    box-shadow: 0 0 0 10px #e0d9d2;
     display: block;
   }
 
@@ -279,15 +269,15 @@ body {
     width: 18px;
     height: 7px;
     margin: 5px 5px;
-    background: #cde1f8;
-    border: 0px solid #cde1f8;
+    background:#e0d9d2;
+    border: 0px solid #e0d9d2;
     display: block;
     transition: all 0.6s ease-in-out;
     cursor: pointer;
   }
 
   .owl-theme .owl-dots .owl-dot:hover span {
-    background-color: #cde1f8;
+    background-color: #e0d9d2;
   }
 
   .owl-theme .owl-dots .owl-dot.active span {
@@ -307,7 +297,7 @@ body {
     position: fixed;
     width: 42px;
     height: 42px;
-    background-color: #2b59e0;
+    background-color:#e0d9d2;
     opacity: .7;
     font-size: 1.6rem;
     line-height: 1.5;
@@ -326,7 +316,7 @@ body {
   .back-to-top {
     position: fixed;
     display: none;
-    background: #2b59e0;
+    background: #e0d9d2;
     color: #fff;
     width: 44px;
     height: 44px;
@@ -364,7 +354,7 @@ body {
     top: calc(50% - 30px);
     left: calc(50% - 30px);
     border: 6px solid #f2f2f2;
-    border-top: 6px solid #2b59e0;
+    border-top: 6px solid #e0d9d2;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -463,7 +453,7 @@ body {
   }
 
   .navbar-b.navbar-trans .nav-link:hover {
-    color: #fff;
+    color: grey;
   }
 
   .navbar-b.navbar-trans .show > .nav-link,
@@ -481,26 +471,26 @@ body {
   }
 
   .navbar-b.navbar-reduce .nav-link {
-    color: #2b59e0;
+    color: ##3D3938;
   }
 
   .navbar-b.navbar-reduce .nav-link:before {
-    background-color: #2b59e0;
+    background-color: ##3D3938;
   }
 
   .navbar-b.navbar-reduce .nav-link:hover {
-    color: #2b59e0;
+    color: ##3D3938;
   }
 
   .navbar-b.navbar-reduce .show > .nav-link,
   .navbar-b.navbar-reduce .active > .nav-link,
   .navbar-b.navbar-reduce .nav-link.show,
   .navbar-b.navbar-reduce .nav-link.active {
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .navbar-b.navbar-reduce .navbar-brand {
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .navbar-b.navbar-reduce .navbar-toggler span {
@@ -508,7 +498,7 @@ body {
   }
 
   .navbar-b .navbar-brand {
-    color: #fff;
+    color: #3D3938;;
     font-size: 1.6rem;
     font-weight: 600;
   }
@@ -534,13 +524,13 @@ body {
   }
 
   .navbar-b .dropdown-menu .dropdown-item:hover {
-    background-color: #2b59e0;
-    color: #fff;
+    background-color: #3D3938;
+    color: #3D3938;;
     transition: all 500ms ease;
   }
 
   .navbar-b .dropdown-menu .dropdown-item.active {
-    background-color: #2b59e0;
+    background-color: #3D3938;
   }
 
   /*--/ Hamburger Navbar /--*/
@@ -654,15 +644,15 @@ body {
 
   .intro-single .breadcrumb {
     background-color: transparent;
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .intro-single .breadcrumb .breadcrumb-item:before {
-    color: #cde1f8;
+    color: grey;
   }
 
   .intro-single .breadcrumb .breadcrumb-item.active {
-    color: #cde1f8;
+    color: grey;
   }
 
   .intro-single .breadcrumb a {
@@ -691,7 +681,7 @@ body {
   }
 
   .skill-mf .progress {
-    background-color: #cde1f8;
+    background-color: grey;
     margin: .5rem 0 1.2rem 0;
     border-radius: 0;
     height: .7rem;
@@ -699,7 +689,7 @@ body {
 
   .skill-mf .progress .progress-bar {
     height: .7rem;
-    background-color: #2b59e0;
+    background-color: #3D3938;
   }
 
   /*======================================
@@ -716,8 +706,8 @@ body {
   .service-box:hover .ico-circle {
     transition: all 500ms ease;
     color: #fff;
-    background-color: #2b59e0;
-    box-shadow: 0 0 0 10px #cde1f8;
+    background-color: #3D3938;
+    box-shadow: 0 0 0 10px grey;
   }
 
   .service-box .service-ico {
@@ -758,7 +748,7 @@ body {
     height: 60px;
     width: 60px;
     line-height: 1.8;
-    box-shadow: 0 0 0 10px #cde1f8;
+    box-shadow: 0 0 0 10px #3D3938;
   }
 
   .counter-num .counter {
@@ -801,17 +791,17 @@ body {
   }
 
   .work-content .w-more .w-ctegory {
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .work-content .w-like {
     font-size: 2.5rem;
-    color: #2b59e0;
+    color: #3D3938;
     float: right;
   }
 
   .work-content .w-like a {
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .work-content .w-like .num-like {
@@ -854,7 +844,7 @@ body {
 
   .testimonial-box .comit {
     font-size: 2rem;
-    color: #2b59e0;
+    color: #3D3938;
     background-color: #fff;
     width: 52px;
     height: 52px;
@@ -887,7 +877,7 @@ body {
     color: #fff;
     padding: 0 15px 5px;
     overflow: hidden;
-    background-color: #2b59e0;
+    background-color: #3D3938;
     border-radius: 4px;
   }
 
@@ -941,7 +931,7 @@ body {
   }
 
   .blog-wrapper .post-meta ul {
-    border-left: 4px solid #2b59e0;
+    border-left: 4px solid #3D3938;
     margin-top: 1rem;
   }
 
@@ -951,7 +941,7 @@ body {
   }
 
   .blog-wrapper .post-meta ul a {
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .blog-wrapper .post-meta ul span {
@@ -959,7 +949,7 @@ body {
   }
 
   .blog-wrapper .blockquote {
-    border-left: 4px solid #2b59e0;
+    border-left: 4px solid #3D3938;
     padding: 18px;
     font-style: italic;
   }
@@ -991,7 +981,7 @@ body {
   }
 
   .box-comments .list-comments a {
-    color: #2b59e0;
+    color: #3D3938;
   }
 
   .box-comments .list-comments span {
@@ -1008,7 +998,7 @@ body {
   .widget-sidebar .sidebar-title {
     font-size: 1.6rem;
     font-weight: 600;
-    border-left: 5px solid #2b59e0;
+    border-left: 5px solid #3D3938;
     padding-left: 15px;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
@@ -1025,7 +1015,7 @@ body {
     width: 10px;
     height: 1px;
     left: 0;
-    background-color: #2b59e0;
+    background-color: #3D3938;
     top: 20px;
   }
 
@@ -1036,8 +1026,8 @@ body {
   }
 
   .sidebar-search .btn-search {
-    background-color: #2b59e0;
-    border-color: #2b59e0;
+    background-color: #3D3938;
+    border-color: #3D3938;
     border-radius: 0;
     padding-left: 20px;
     padding-right: 20px;
@@ -1094,8 +1084,8 @@ body {
   ======================================*/
 
   #sendmessage {
-    color: #2b59e0;
-    border: 1px solid #2b59e0;
+    color: #3D3938;
+    border: 1px solid #3D3938;
     display: none;
     text-align: center;
     padding: 15px;
@@ -1152,15 +1142,15 @@ body {
   }
 
   .button:hover {
-    background-color: #0062d3;
+    background-color: #323335;
     color: #fff;
     transition: all 500ms ease;
   }
 
   .button-a {
-    background-color: #2b59e0;
-    color: #fff;
-    border-color: #cde1f8;
+    background-color: #e0d9d2;
+
+    border-color: grey;
   }
 
   .button-big {
@@ -1271,3 +1261,5 @@ body {
       bottom: 15px;
     }
   }
+
+

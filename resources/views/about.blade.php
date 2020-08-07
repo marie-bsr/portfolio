@@ -23,7 +23,7 @@ margin-top: 200px;
                 <div class="row">
                   <div class="col-sm-6 col-md-5">
                     <div class="about-img">
-                      <img src="img/testimonial-2.png" class="img-fluid rounded b-shadow-a" alt="">
+                      <img src="img/freelancer.png" class="img-fluid rounded b-shadow-a" alt="">
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-7">

@@ -10,7 +10,7 @@ class Article extends Model
     //permet de ne pas supprimer définitivement les articles, passage par une "corbeille"
     use SoftDeletes;
     //protection contre le mass assignment
-    protected $fillable = ['titre', 'extrait','image', 'categorie', 'contenu', 'user_id'];
+    protected $fillable = ['titre', 'extrait','imageUrl', 'category_id', 'contenu', 'user_id'];
 
     public function path(){
         return  route('articles.show',$this);

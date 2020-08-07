@@ -43,7 +43,7 @@ margin-top: 6rem;
                     <div class="col-md-4">
                         <div class="card card-blog ">
                             <div class="card-img">
-                                <a href="{{ $article->path()}}"><img src="{{ $article->image }}" alt="" class="img-fluid"></a>
+                                <a href="$article->path()"><img src="{{ $article->image }}" alt="" class="img-fluid"></a>
                             </div>
                             <div class="card-body"  >
                                 <div class="card-category-box">
@@ -51,7 +51,7 @@ margin-top: 6rem;
                                         <h6 class="category text-white">{{ $article->category->name}}</h6>
                                     </div>
                                 </div>
-                            <h3 class="card-title mt-4"><a href="{{ $article->path()}}">{{ $article->titre }}</a></h3>
+                            <h3 class="card-title"><a href="{{ $article->path()}}">{{ $article->titre }}</a></h3>
                                 <p class="card-description">
                                 <p>{{ $article->contenu }}</p>
                                 </p>

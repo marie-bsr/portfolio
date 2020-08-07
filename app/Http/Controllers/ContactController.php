@@ -22,9 +22,11 @@ class ContactController extends Controller
 
         $contact->name = $request->name;
         $contact->email = $request->email;
-        $contact->subject = $request->subject;
+        $contact->secteur = $request->secteur;
         $contact->phone_number = $request->phone_number;
         $contact->message = $request->message;
+       $contact->sites = $request->sites;
+        $contact->started = $request->started;
 
         $contact->save();
 
@@ -32,7 +34,9 @@ class ContactController extends Controller
              array(
                  'name' => $request->get('name'),
                  'email' => $request->get('email'),
-                 'subject' => $request->get('subject'),
+                 'secteur' => $request->get('secteur'),
+                 'sites' => $request->get('sites'),
+                 'started' => $request->get('started'),
                  'phone_number' => $request->get('phone_number'),
                  'user_message' => $request->get('message'),
              ), function($message) use ($request)

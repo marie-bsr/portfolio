@@ -30,8 +30,8 @@
     <p class="help is-danger">{{$errors->first('titre')}}</p>
 @endif
     </div>
-    <!--
-        upload d'image et enregistrement dans le projet
+
+
     <div class="form-group">
         <label for="categorie">Image</label>
         <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image"  value="{{ old('image') }}">
@@ -39,7 +39,8 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
--->
+
+ <!--
 <div class="form-group">
     <label for="titre">Image URL</label>
   <input type="text"
@@ -48,14 +49,14 @@
   name="image"
   value="{{old('image')}}"
   required >
-
+-->
   @if ($errors->has('image'))
   <p class="help is-danger">{{$errors->first('image')}}</p>
 @endif
   </div>
       <div class="form-group">
         <label for="categorie">Categorie</label>
-        <select class="form-control @error ('categorie') is-danger @enderror" id="categorie" name="categorie" required>
+        <select class="form-control @error ('categorie') is-danger @enderror" id="categorie" name="category_id" required>
             @foreach ($categories as $categorie)
     <option value="{{$categorie->id}}">{{$categorie->name}}</option>
     @endforeach

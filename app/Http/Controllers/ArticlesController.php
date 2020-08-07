@@ -2,73 +2,87 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Models\Tag;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image as InterventionImage;
 
 class ArticlesController extends Controller
 {
     public function index()
     {
         //si l'url continet un tag, on affiche les articles contenant ce tag
-        if (request('tag')){
-            $articles = Tag::where('name', request('tag'))->firstOrFail()->articles;
-
-        } else{
-//retourne la liste des articles
-//$articles = Article::orderBy("created_at", "desc")->limit(6)->get();
-//$articles = Article::withTrashed()->paginate(3);
-$articles = Article::orderBy("created_at", "desc")->paginate(3);
-
+        if (request('tag')) {
+            //ci-dessous ne marche pas avec pagination
+            // $articles = Tag::where('name', request('tag'))->firstOrFail()->articles;
+            $articles = Tag::where('name', request('tag'))->firstOrFail()->articles()->paginate(3);
+        } else {
+            //retourne la liste des articles
+            //$articles = Article::orderBy("created_at", "desc")->limit(6)->get();
+            //$articles = Article::withTrashed()->paginate(3);
+            $articles = Article::orderBy("created_at", "desc")->paginate(3);
         }
-
-
         return view('articles.index', ['articles' => $articles]);
     }
+
 
     public function show(Article $article)
     //retourne un seul article
     {
 
         return view('articles.show', [
-        //  'article' => $article::withTrashed()->first(),
-        'article' => $article,
-'lastArticles' => Article::orderBy("created_at", "desc")->limit(6)->get(),
+            //  'article' => $article::withTrashed()->first(),
+            'article' => $article,
+
+            'lastArticles' => Article::orderBy("created_at", "desc")->limit(6)->get(),
 
 
-            ]);
+        ]);
     }
 
     public function create()
     {
-//on a besoin de variables tags et categories pour les afficher tous
-        return view('articles.create',[
+        //on a besoin de variables tags et categories pour les afficher tous
+        return view('articles.create', [
             'tags' => Tag::all(),
             'categories' => Category::all()
         ]);
     }
 
-    public function store()
+    public function store(StoreArticleRequest $request)
     {
-        //enregistre ce nouvel article
-        //dump(request()->all());
-        $this->validateArticle();
-        $article = new Article(request(['titre',
-        'extrait',
-        'contenu',
-        'image'
-
-        ]));
-
-       // $article->image->store(config('images.path'), 'public');
 
 
+        $request->merge(['user_id' => 1]);
 
-        $article->user_id =1;
-        $article->save();
+
+        if ($request->file('image')) {
+            $imageUrl = $this->saveImages($request);
+            $request->merge(['image_url' => $imageUrl]);
+           //dd($request->all());
+        }
+        //dd($request->all());
+        $article = Article::create($request->except('image'));
         $article->tags()->attach(request('tags'));
         return redirect('/blog');
+    }
+
+    protected function saveImages($request)
+    {
+        $image = $request->file('image');
+        // Make a image name based on user name and current timestamp
+        $name = Str::slug($request->input('titre')) . '_' . time();
+        // Define folder path
+        $folder = '/storage/uploads/';
+        // Make a file path where image will be stored [ folder path + file name + file extension]
+
+        $path = $folder . $name . '.' . $image->getClientOriginalExtension();
+        $img = InterventionImage::make($image->path());
+        $img->widen(800)->encode()->save(public_path() . $path);
+
+        return $path;
     }
 
 
@@ -77,10 +91,11 @@ $articles = Article::orderBy("created_at", "desc")->paginate(3);
     {
         //affiche une view pour éditer un article
 
-        return view('articles.edit', ['article' => $article,
-        'tags' => Tag::all(),
-        'categories' => Category::all()]
-    );
+        return view('articles.edit', [
+            'article' => $article,
+            'tags' => Tag::all(),
+            'categories' => Category::all()
+        ]);
     }
 
 
@@ -89,7 +104,7 @@ $articles = Article::orderBy("created_at", "desc")->paginate(3);
     {
         //enregistre l'article édité
 
-        $article->update($this->validateArticle());
+        $article->update();
 
         return redirect($article->path());
     }
@@ -97,35 +112,21 @@ $articles = Article::orderBy("created_at", "desc")->paginate(3);
     {
         //supprime l'article
 
-    $article->delete();
+        $article->delete();
 
-//il faudrait ajouter une confirmation
+        //il faudrait ajouter une confirmation
         return redirect('/blog')->with('info', 'L article a bien été archivé dans la base de données.');
-
     }
 
-    protected function validateArticle(){
-        return request()->validate([
-            'titre' => 'required',
-
-            'extrait' => 'required',
-            'contenu' => 'required',
-            'tags' =>'exists:tags,id',
-           // 'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
-        ]);
-    }
 
     public function forceDestroy($id)
-{
-    Article::withTrashed()->whereId($id)->firstOrFail()->forceDelete();
-    return redirect('/blog')->with('info', "L'article a bien été supprimé définitivement dans la base de données.");
-}
-public function restore($id)
-{
-    Article::withTrashed()->whereId($id)->firstOrFail()->restore();
-    return redirect('/blog')->with('info', "L'article a bien été restauré.");
-}
-
-
-
+    {
+        Article::withTrashed()->whereId($id)->firstOrFail()->forceDelete();
+        return redirect('/blog')->with('info', "L'article a bien été supprimé définitivement dans la base de données.");
+    }
+    public function restore($id)
+    {
+        Article::withTrashed()->whereId($id)->firstOrFail()->restore();
+        return redirect('/blog')->with('info', "L'article a bien été restauré.");
+    }
 }

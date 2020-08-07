@@ -25,16 +25,11 @@
             <label for="titre">Titre</label>
             <textarea class="form-control @error ('titre') is-danger @enderror" id="titre"  name="titre" required>{{$article->titre}}</textarea>
           </div>
-          <!--
-    <div class="form-group">
-        <label for="image">Image</label>
-        <input type="file" value="{{$article->image}}"class="form-control @error('image') is-invalid @enderror" name="image" id="image" >
- @error('image')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
+          <div class="form-group">
+            <label for="titre">Image URL</label>
+            <textarea class="form-control @error ('image') is-danger @enderror" id="image"  name="image" required>{{$article->image}}</textarea>
+          </div>
 
-      </div>
-    -->
       <div class="form-group">
         <label for="categorie">Categorie</label>
         <select class="form-control @error ('categorie') is-danger @enderror" id="categorie" name="categorie" required>

@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('titre');
             $table->text('contenu');
             $table->text('extrait')->nullable();
-            $table->text('image')->nullable();
+            $table->text('imageUrl')->nullable();
             $table->softDeletes()->nullable();// création d'une corbeille pour éviter une suppression définitive
 
 

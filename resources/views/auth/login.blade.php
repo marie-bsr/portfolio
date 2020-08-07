@@ -5,7 +5,15 @@
 margin-top: 200px;
  }
  body{
-     background-image: url("img/intro-bg.jpg");
+       /* Full height */
+  height: 100%;
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+     background-image: url("https://images.unsplash.com/photo-1595214130218-a8d35b70cbea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
  }
 
 </style>

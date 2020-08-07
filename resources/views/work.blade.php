@@ -8,16 +8,24 @@
 
 <style>
        .box{
-margin-top: 200px;
+        margin-top: 200px;
+    }
+    .red{
+        background-color: #f6f3ef;
+        margin-top: 4rem;
     }
 </style>
+
   <!--/ Section Portfolio Star /-->
   <section id="work" class="portfolio-mf sect-pt4 route">
+      <div class="red">
+
     <div class="container box">
+
       <div class="row">
         <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">
+          <div class="title-box text-center mt-4 ">
+            <h3 class="title-a ">
               Portfolio
             </h3>
             <p class="subtitle-a">
@@ -175,6 +183,7 @@ margin-top: 200px;
 
       </div>
     </div>
+</div>
   </section>
   <!--/ Section Portfolio End /-->
 
