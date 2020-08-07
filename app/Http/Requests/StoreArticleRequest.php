@@ -25,20 +25,17 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'titre' => 'required',
-
             'extrait' => 'required',
             'contenu' => 'required',
             'tags' => 'exists:tags,id',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
-
         ];
     }
 
-    public function messages(){
-//to do
-return [
-    'titre.required' => 'le champ titre est requis',
-
-];
+    public function messages()
+    {
+        return [
+            'titre.required' => 'le champ titre est requis',
+        ];
     }
 }

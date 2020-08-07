@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    public function articles(){
+    protected $table = 'categories';
+    public $timestamps = false;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
+    {
         return $this->hasMany(Article::class);
     }
 }

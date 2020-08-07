@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Article;
 use App\Models\User;
+use App\Models\Category;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -14,7 +15,8 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
         factory(Article::class, 5)->create([
-            'user_id' => User::where('id', '=', 1)->first()->id
+            'user_id' => User::where('id', '=', 1)->first()->id,
+            'category_id' => Category::where('id', '=', 1)->first()->id
         ]);
     }
 }

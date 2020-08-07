@@ -6,6 +6,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Models\Tag;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image as InterventionImage;
 
@@ -27,19 +28,15 @@ class ArticlesController extends Controller
         return view('articles.index', ['articles' => $articles]);
     }
 
-
+    /**
+     * Affiche le contenu d'un article
+     * @param Article $article
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Article $article)
-    //retourne un seul article
     {
-
-        return view('articles.show', [
-            //  'article' => $article::withTrashed()->first(),
-            'article' => $article,
-
-            'lastArticles' => Article::orderBy("created_at", "desc")->limit(6)->get(),
-
-
-        ]);
+        $lastArticles = Article::orderBy("created_at", "desc")->limit(6)->get();
+        return view('articles.show', compact('article', 'lastArticles'));
     }
 
     public function create()
@@ -53,17 +50,13 @@ class ArticlesController extends Controller
 
     public function store(StoreArticleRequest $request)
     {
-
-
         $request->merge(['user_id' => 1]);
-
 
         if ($request->file('image')) {
             $imageUrl = $this->saveImages($request);
             $request->merge(['image_url' => $imageUrl]);
-           //dd($request->all());
         }
-        //dd($request->all());
+
         $article = Article::create($request->except('image'));
         $article->tags()->attach(request('tags'));
         return redirect('/blog');
@@ -75,17 +68,17 @@ class ArticlesController extends Controller
         // Make a image name based on user name and current timestamp
         $name = Str::slug($request->input('titre')) . '_' . time();
         // Define folder path
-        $folder = '/storage/uploads/';
+        $folder = '/uploads/';
         // Make a file path where image will be stored [ folder path + file name + file extension]
 
         $path = $folder . $name . '.' . $image->getClientOriginalExtension();
         $img = InterventionImage::make($image->path());
-        $img->widen(800)->encode()->save(public_path() . $path);
+        $img->widen(800)->encode();
+
+        Storage::disk('public')->putFileAs($folder, $image, $name, 'private');
 
         return $path;
     }
-
-
 
     public function edit(Article $article)
     {
@@ -99,7 +92,6 @@ class ArticlesController extends Controller
     }
 
 
-
     public function update(Article $article)
     {
         //enregistre l'article édité
@@ -108,6 +100,7 @@ class ArticlesController extends Controller
 
         return redirect($article->path());
     }
+
     public function destroy(Article $article)
     {
         //supprime l'article
@@ -124,6 +117,7 @@ class ArticlesController extends Controller
         Article::withTrashed()->whereId($id)->firstOrFail()->forceDelete();
         return redirect('/blog')->with('info', "L'article a bien été supprimé définitivement dans la base de données.");
     }
+
     public function restore($id)
     {
         Article::withTrashed()->whereId($id)->firstOrFail()->restore();

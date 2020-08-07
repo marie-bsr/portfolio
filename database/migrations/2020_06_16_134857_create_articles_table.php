@@ -18,17 +18,14 @@ class CreateArticlesTable extends Migration
             $table->timestamps();
             $table->timestamp('date')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('titre');
             $table->text('contenu');
             $table->text('extrait')->nullable();
-            $table->text('imageUrl')->nullable();
+            $table->text('image_url')->nullable();
             $table->softDeletes()->nullable();// création d'une corbeille pour éviter une suppression définitive
-
 
             //si on delete un user, on delete aussi ses articles
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
