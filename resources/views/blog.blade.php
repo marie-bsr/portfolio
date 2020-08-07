@@ -22,7 +22,13 @@
                 <div class="col-md-4">
                     <div class="card card-blog">
                         <div class="card-img">
-                            <a href="blog-single.html"><img src="{{ $article->image}}" alt="" class="img-fluid"></a>
+                            <a href="blog-single.html">
+                                @if($article->image_url)
+                                    <img src="{{ asset('storage/app/' . $article->image_url}}" alt="" class="img-fluid">
+                                @else
+                                <img src="#" alt="" class="img-fluid">
+                                @endif
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="card-category-box">

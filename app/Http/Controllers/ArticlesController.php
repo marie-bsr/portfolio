@@ -6,6 +6,8 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Models\Article;
 use App\Models\Tag;
 use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image as InterventionImage;
@@ -59,23 +61,13 @@ class ArticlesController extends Controller
 
         $article = Article::create($request->except('image'));
         $article->tags()->attach(request('tags'));
+
         return redirect('/blog');
     }
 
-    protected function saveImages($request)
+    protected function saveImages(Request $request)
     {
-        $image = $request->file('image');
-        // Make a image name based on user name and current timestamp
-        $name = Str::slug($request->input('titre')) . '_' . time();
-        // Define folder path
-        $folder = '/uploads/';
-        // Make a file path where image will be stored [ folder path + file name + file extension]
-
-        $path = $folder . $name . '.' . $image->getClientOriginalExtension();
-        $img = InterventionImage::make($image->path());
-        $img->widen(800)->encode();
-
-        Storage::disk('public')->putFileAs($folder, $image, $name, 'private');
+        $path = $request->file('image')->store('uploads');
 
         return $path;
     }

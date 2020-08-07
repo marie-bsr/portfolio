@@ -43,7 +43,11 @@ margin-top: 6rem;
                     <div class="col-md-4">
                         <div class="card card-blog ">
                             <div class="card-img">
-                                <a href="$article->path()"><img src="{{ $article->image }}" alt="" class="img-fluid"></a>
+                                @if($article->image_url)
+                                    <img src="{{ asset('storage/app/' . $article->image_url) }}" alt="" class="img-fluid">
+                                @else
+                                    <img src="#" alt="" class="img-fluid">
+                                @endif
                             </div>
                             <div class="card-body"  >
                                 <div class="card-category-box">
